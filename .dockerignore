@@ -1,0 +1,10 @@
+# flyctl launch added from .gitignore
+go mod
+**\go.sum
+
+ env variables
+**\.env
+
+ air files
+tmp
+fly.toml
