@@ -1,10 +1,9 @@
 package database
 
 import (
-	"fmt"
 	"log"
-	"os"
 
+	"github.com/eideard-hm/portfolio-rest-api/src/config"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -12,12 +11,7 @@ import (
 var db *gorm.DB
 
 func DbConnection() {
-	dbHost := os.Getenv("PGHOST")
-	dbName := os.Getenv("PGDATABASE")
-	dbPass := os.Getenv("PGPASSWORD")
-	dbPort := os.Getenv("PGPORT")
-	dbUser := os.Getenv("PGUSER")
-	dsn := fmt.Sprintf("postgresql://%s:%s@%s:%s/%s", dbUser, dbPass, dbHost, dbPort, dbName)
+	dsn := config.RetrieveDbDns()
 
 	conn, error := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
