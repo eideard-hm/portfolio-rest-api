@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/eideard-hm/portfolio-rest-api/src/config"
+	"github.com/eideard-hm/portfolio-rest-api/src/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -26,4 +27,7 @@ func DbConnection() {
 // returns a handle to the DB object
 func GetDb() *gorm.DB {
 	return db
+}
+func Migrate() {
+	db.Debug().AutoMigrate(&models.User{})
 }
