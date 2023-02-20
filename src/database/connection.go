@@ -28,6 +28,7 @@ func DbConnection() {
 func GetDb() *gorm.DB {
 	return db
 }
+
 func Migrate() {
 	db.Debug().AutoMigrate(&models.User{})
 }
